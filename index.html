@@ -30,12 +30,19 @@
         <section class="player-panel" aria-label="Player">
             <div class="player-wrapper" id="playerWrapper">
                 <video id="video" playsinline controls></video>
+                <!-- On-screen info overlay for errors/unsupported content -->
+                <div id="infoOverlay" class="info-overlay" aria-live="assertive" role="alert" hidden>
+                    <div class="info-box">
+                        <p class="info-text" id="infoText"></p>
+                        <p class="info-code" id="infoCode"></p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="sf-footer">
-        <small>&copy; 2025 StreamFlix. All rights reserved.</small>
+        <small>&copy; 2025 StreamFlix v2.0.0. All rights reserved.</small>
         <br>
         <small>Developed by Faysal Mahmud</small>
     </footer>
