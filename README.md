@@ -1,4 +1,4 @@
-# StreamFlix Simple Player
+# StreamFlix Player
 
 A clean, Netflix-style HTML5 video player with native controls and optional HLS (.m3u8) support via Hls.js.
 
@@ -11,6 +11,8 @@ A clean, Netflix-style HTML5 video player with native controls and optional HLS 
 ## Use It
 1. Open `index.html` in a modern browser (Chrome, Edge, Firefox, Safari).
 2. Paste a video URL and click "Play" or click "Upload" to select a local file. You can also drag & drop onto the player.
+
+Visit the live player here: https://faysalmahmud74.github.io/web-player/
 
 ## HLS (.m3u8)
 Includes a CDN script for [Hls.js](https://github.com/video-dev/hls.js). If your browser doesn’t support HLS natively, `.m3u8` URLs will play via Hls.js when available.
