@@ -1,26 +1,4 @@
-/* StreamFlix Premium Styles */
-:root {
-  --bg: #0e0f12;
-  --bg-2: #14161b;
-  --glass: rgba(255, 255, 255, 0.06);
-  --text: #e7e9ee;
-  --muted: #a0a6b3;
-  --accent: #e50914;
-  --accent-2: #ff3b45;
-  --ok: #22c55e;
-  --warn: #f59e0b;
-  --shadow: 0 20px 40px rgba(0,0,0,0.5);
-  --radius: 14px;
-}
-
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-body {
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  background: radial-gradient(1200px 600px at 10% 10%, #1b1d24 0%, var(--bg) 35%) no-repeat fixed;
-  color: var(--text);
-/* StreamFlix Simple Styles */
+/* StreamFlix Styles (clean + responsive) */
 :root {
   --bg: #0e0f12;
   --text: #e7e9ee;
@@ -30,12 +8,19 @@ body {
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; }
+html { scroll-behavior: smooth; }
+html, body { min-height: 100%; }
 body {
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   background: #141414;
   color: var(--text);
+  /* Make page height responsive across screens */
+  min-height: 100vh;
+  min-height: 100dvh; /* dynamic viewport unit for modern browsers */
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* header | content | footer */
+  overflow: hidden; /* no page scroll; player will fit to viewport */
 }
 
 /* Header */
@@ -54,12 +39,16 @@ body {
 /* Main layout */
 .sf-main.simple {
   max-width: 980px;
-  margin: 24px auto;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  padding: 0 16px;
+  padding: 16px;
+  width: 100%;
 }
+
+/* Ensure the player area can shrink within viewport */
+.player-panel { min-height: 0; }
 
 /* Source panel */
 .source-panel {
@@ -67,7 +56,7 @@ body {
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius);
   padding: 14px;
-}
+  }
 .source-inputs { display: flex; gap: 10px; flex-wrap: wrap; }
 .source-inputs input[type="text"] {
   flex: 1 1 360px;
@@ -85,6 +74,7 @@ body {
   padding: 10px 14px;
   border-radius: 10px;
   cursor: pointer;
+  text-align: center;
 }
 .btn.primary { background: var(--accent); color: #fff; border: none; }
 .note { color: var(--muted); margin-top: 6px; font-size: 13px; }
@@ -94,9 +84,30 @@ body {
   background: #000;
   overflow: hidden;
   border-radius: var(--radius);
+  width: 100%;
+  /* Keep a sensible height on various screens */
+  aspect-ratio: 16 / 9;
+  /* JS sets --player-max-h so the page fits without scroll */
+  max-height: var(--player-max-h, 60dvh);
 }
-.player-wrapper video { width: 100%; height: auto; display: block; background: #000; }
+.player-wrapper video { width: 100%; height: 100%; display: block; background: #000; object-fit: contain; }
 
 /* Footer */
 .sf-footer { text-align: center; color: var(--muted); padding: 18px; }
+
+/* Compact spacing for shorter laptop screens */
+@media (max-height: 800px) {
+  .sf-main.simple { margin: 16px auto; gap: 12px; }
+  .sf-header { padding: 12px 18px; }
+  .sf-footer { padding: 12px; }
+}
+
+/* Mobile tuning */
+@media (max-width: 640px) {
+  .sf-main.simple { padding: 12px; gap: 12px; }
+  .source-inputs { flex-direction: column; gap: 8px; }
+  .source-inputs input[type="text"],
+  .source-inputs .btn { flex: 1 1 auto; width: 100%; }
+  .brand .name { padding: 10px 16px; font-size: 18px; }
+  .player-wrapper { border-radius: 10px; }
 }

@@ -49,4 +49,28 @@
     const file = e.dataTransfer?.files?.[0];
     if (file) loadFile(file);
   });
+
+  // Responsive player height: keep page within viewport on laptops
+  const footer = document.querySelector('.sf-footer');
+  const main = document.querySelector('.sf-main');
+  const setPlayerMaxHeight = () => {
+    if (!el.wrapper) return;
+    const rect = el.wrapper.getBoundingClientRect();
+    const footerH = footer ? footer.offsetHeight : 0;
+    // Account for main's bottom padding/margin so page doesn't overflow
+    const cs = main ? getComputedStyle(main) : null;
+    const mainPB = cs ? parseFloat(cs.paddingBottom || '0') : 0;
+    const mainMB = cs ? parseFloat(cs.marginBottom || '0') : 0;
+    // Small safety allowance
+    const allowance = 12;
+    const available = Math.max(200, Math.floor(window.innerHeight - rect.top - footerH - mainPB - mainMB - allowance));
+    document.documentElement.style.setProperty('--player-max-h', `${available}px`);
+  };
+  // Run on load and resize
+  window.addEventListener('resize', setPlayerMaxHeight);
+  window.addEventListener('orientationchange', setPlayerMaxHeight);
+  window.addEventListener('DOMContentLoaded', setPlayerMaxHeight);
+  window.addEventListener('load', setPlayerMaxHeight);
+  // Also run soon after scripts load (in case DOMContentLoaded already fired)
+  setTimeout(setPlayerMaxHeight, 0);
 })();
