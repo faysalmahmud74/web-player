@@ -1,0 +1,102 @@
+/* StreamFlix Premium Styles */
+:root {
+  --bg: #0e0f12;
+  --bg-2: #14161b;
+  --glass: rgba(255, 255, 255, 0.06);
+  --text: #e7e9ee;
+  --muted: #a0a6b3;
+  --accent: #e50914;
+  --accent-2: #ff3b45;
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --shadow: 0 20px 40px rgba(0,0,0,0.5);
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  background: radial-gradient(1200px 600px at 10% 10%, #1b1d24 0%, var(--bg) 35%) no-repeat fixed;
+  color: var(--text);
+/* StreamFlix Simple Styles */
+:root {
+  --bg: #0e0f12;
+  --text: #e7e9ee;
+  --muted: #a0a6b3;
+  --accent: #e50914;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  background: #141414;
+  color: var(--text);
+}
+
+/* Header */
+.sf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: #000;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand .logo { color: var(--accent); }
+.brand .name { background: #000; padding: 15px 30px; font-size: 24px; font-weight: bold; color: #e50914; cursor: pointer; }
+
+/* Main layout */
+.sf-main.simple {
+  max-width: 980px;
+  margin: 24px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+/* Source panel */
+.source-panel {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+.source-inputs { display: flex; gap: 10px; flex-wrap: wrap; }
+.source-inputs input[type="text"] {
+  flex: 1 1 360px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #8D8E93;
+  padding: 12px 14px;
+  border-radius: 10px;
+  outline: none;
+}
+.btn {
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn.primary { background: var(--accent); color: #fff; border: none; }
+.note { color: var(--muted); margin-top: 6px; font-size: 13px; }
+
+/* Player */
+.player-wrapper {
+  background: #000;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+.player-wrapper video { width: 100%; height: auto; display: block; background: #000; }
+
+/* Footer */
+.sf-footer { text-align: center; color: var(--muted); padding: 18px; }
+}

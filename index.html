@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StreamFlix Player</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="sf-header">
+        <div class="brand">
+            <span onclick="location.reload()" class="name">
+                <img src="./assets/logo.png" alt="StreamFlix" class="logo" height="36" />
+            </span>
+        </div>
+    </header>
+
+    <main class="sf-main simple">
+        <section class="source-panel" aria-label="Source">
+            <div class="source-inputs">
+                <input id="sourceInput" type="text" placeholder="Paste video URL (MP4, WebM, HLS .m3u8)" />
+                <button class="btn primary" id="btnPlayUrl">Play</button>
+                <label for="fileInput" class="btn">Upload</label>
+                <input id="fileInput" type="file" accept="video/*" hidden />
+            </div>
+        </section>
+
+        <section class="player-panel" aria-label="Player">
+            <div class="player-wrapper" id="playerWrapper">
+                <video id="video" playsinline controls></video>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sf-footer">
+        <small>&copy; 2025 StreamFlix. All rights reserved.</small>
+        <br>
+        <small>Developed by Faysal Mahmud</small>
+    </footer>
+
+    <!-- Optional HLS.js for .m3u8 playback -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
